@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from './screens/Login';
 import Tela1Screen from './screens/Tela1';
+import cadastro from './screens/Cadastro';
 
 
 // function HomeScreen() {
@@ -22,6 +23,7 @@ return (
 <Stack.Navigator initialRouteName="Tela1">
 <Stack.Screen name="Login" component={LoginScreen} />
 <Stack.Screen name="Tela1" component={Tela1Screen} />
+<Stack.Screen name="cadastro" component={cadastro} />
 
 
 

@@ -4,6 +4,7 @@ import { Avatar } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Input } from 'react-native-elements';
 import { Button } from 'react-native-elements';
+import cadastro from "./Cadastro";
 
 export default function Tela1({route,navigation}){
 
@@ -15,7 +16,7 @@ export default function Tela1({route,navigation}){
   }]}>
   
 <View >
-<Button style={{ marginTop:50}} title="Entrar"/>
+<Button onPress={()=>navigation.navigate('cadastro')}style={{ marginTop:50}} title="Entrar"/>
 </View>
 </View>
 );};
