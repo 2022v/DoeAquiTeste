@@ -4,7 +4,13 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from './screens/Login';
 import Tela1Screen from './screens/Tela1';
-import cadastro from './screens/Cadastro';
+import cadastroScreen from './screens/Cadastro';
+import cadastroPFScreen from './screens/CadastroPF';
+import cadastroONGScreen from './screens/CadastroONG';
+import LocalizacaoScreen from './screens/Localizacao';
+import RecSenhaScreen from './screens/RecSenha';
+import HomeScreen from './screens/Home';
+import PerfilScreen from './screens/Perfil';
 
 
 // function HomeScreen() {
@@ -21,9 +27,15 @@ function App() {
 return (
 <NavigationContainer>
 <Stack.Navigator initialRouteName="Tela1">
-<Stack.Screen name="Login" component={LoginScreen} />
-<Stack.Screen name="Tela1" component={Tela1Screen} />
-<Stack.Screen name="cadastro" component={cadastro} />
+<Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
+<Stack.Screen name="Tela1" component={Tela1Screen} options={{ headerShown: false }}/>
+<Stack.Screen name="RecSenha" component={RecSenhaScreen} options={{ headerShown: false }}/>
+<Stack.Screen name="Cadastro" component={cadastroScreen} options={{ headerShown: false }}/>
+<Stack.Screen name="CadastroPF" component={cadastroPFScreen} options={{ headerShown: false }}/>
+<Stack.Screen name="CadastroONG" component={cadastroONGScreen} options={{ headerShown: false }}/>
+<Stack.Screen name="Localizacao" component={LocalizacaoScreen} options={{ headerShown: false }}/>
+<Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }}/>
+<Stack.Screen name="Perfil" component={PerfilScreen} options={{ headerShown: false }}/>
 
 
 

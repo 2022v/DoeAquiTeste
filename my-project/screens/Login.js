@@ -14,14 +14,7 @@ export default function Login({route,navigation}){
   flexDirection: "column"
   }]}>
 
-<View style={{ flex: 0.3}} >
 
-<Icon
-  name='arrow-left'
-  color='black' 
-  size={20}/>
-
-</View>
 
 
 <View style={{ flex: 1,alignItems:"center", paddingTop:50}} >
@@ -32,26 +25,27 @@ export default function Login({route,navigation}){
   <Avatar
   rounded
   size="xlarge"
-  source={{
-    uri:
-      '../../my-project/assets/Logo.png',
-  }}
+  source={require('../../my-project/assets/Logo.png')}
+
 />
 </View>
 
 
 
-<View style={{ flex: 1, alignItems:"center", paddingTop:20}}>
-<Input  leftIcon={{ type: 'font-awesome', name: 'user', color:'white' }} style={{width:"300px"}} placeholder={' login'}/>
-<Input  leftIcon={{ type: 'font-awesome', name: 'lock' , color:'white'}} placeholder={" senha"} secureTextEntry={true} />
+<View style={{ flex: 1, alignItems:"center"}}>
+<Input  leftIcon={<Icon name='envelope'size={24} color='black'/>} style={{width:"300px"}} placeholder={' Email'}/>
+<Input  leftIcon={<Icon name='lock'size={24} color='black'/>} placeholder={" Senha"} secureTextEntry={true} />
 </View>
 
-<View style={{ flex: 2, alignItems:"center", paddingTop:20}}>
-<Button style={{ marginTop:50, width:150}} buttonStyle={{backgroundColor:"black", borderRadius: 20}} title="Entrar" onPress={()=>navigation.navigate('Login')}/>
+<View style={{ flex: 1, alignItems:"center", paddingTop:20}}>
+<Button style={{ marginTop:50, width:150}} buttonStyle={{backgroundColor:"black", borderRadius: 20}} title="Entrar" onPress={()=>navigation.navigate('Home')}/>
 
-<Button style={{ marginTop:20, width:150}} title="Cadastre-se" buttonStyle={{backgroundColor:"black",  borderRadius: 20}} onPress={()=>navigation.navigate('')}/>
+<Button style={{ marginTop:20, width:150}} title="Cadastre-se" buttonStyle={{backgroundColor:"black",  borderRadius: 20}} onPress={()=>navigation.navigate('Cadastro')}/>
 
-<Button style={{ marginTop:20, width:200}} title="Esqueceu a Senha?"  titleStyle={{color: "black"}} buttonStyle={{backgroundColor:"white"}} onPress={()=>navigation.navigate('')}/>
+<Button style={{ marginTop:20, width:200}} title="Esqueceu a Senha?"  titleStyle={{color: "black"}} buttonStyle={{backgroundColor:"white"}} onPress={()=>navigation.navigate('RecSenha')}/>
+
+
+<Button style={{ marginTop:20, width:200}} title="Perfil?"  titleStyle={{color: "black"}} buttonStyle={{backgroundColor:"white"}} onPress={()=>navigation.navigate('Perfil')}/>
 
 </View>
 

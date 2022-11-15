@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { Input } from 'react-native-elements';
 import { Button } from 'react-native-elements';
 
-export default function cadastro({route,navigation}){
+export default function Cadastro({route,navigation}){
 
 
   return (
@@ -14,34 +14,63 @@ export default function cadastro({route,navigation}){
   flexDirection: "column"
   }]}>
 
-<View style={{ alignSelf:'center',width:'300',height:'60',alignItems:"center", paddingTop:50}} >
-  <Avatar
+<View style={{ flex: 0.3}} >
+
+<Icon
+  onPress={()=>navigation.navigate('Login')}
+  name='arrow-left'
+  color='black' 
+  size={20}/>
+
+</View>
+
+
+<View style={{ flex: 1,alignItems:"center", paddingTop:50}} >
+   <Avatar
   rounded
   size="xlarge"
-  source={{
-    uri:
-      'https://static.vecteezy.com/ti/vetor-gratis/p1/5026528-vector-illustration-female-avatar-in-flat-style-gr%C3%A1tis-vetor.jpg',
-  }}
+  source={require('../../my-project/assets/Logo.png')}
 />
 </View>
 
 
 
-<View style={{alignSelf:'center', backgroundColor:'white',alignItems:"center", top:'50px', width:'300px', height:'90px', borderRadius:"10px",borderWidth:'2px'}}>
-<Button onPress={()=>navigation.navigate('')}  buttonStyle={{backgroundColor:"white",top:"20px", width:"150px", height:"50px"}} title="Pessoa Física" titleStyle={{color:'black'}}/>
+<View style={{ flex: 2,alignItems:"center", paddingTop:50}} >
+<Button 
+icon={
+  <Icon
+    name="user"
+    size={30}
+    color="black"
+  />}
+onPress={()=>navigation.navigate('CadastroPF')} 
+buttonStyle={{backgroundColor:"white",
+              width:"300px", 
+              height:"90px",
+              borderColor:'black',
+              borderWidth:2, 
+              borderRadius:"10px"}}
+               title=" Pessoa Física" titleStyle={{color:'black'}}
+               />
+
+<Button 
+style={{marginTop:10}}
+ icon={
+  <Icon
+    name="user"
+    size={30}
+    color="black"
+  />}
+onPress={()=>navigation.navigate('CadastroONG')}  
+buttonStyle={{backgroundColor:"white", 
+              width:"300px", 
+              height:"90px",
+              borderColor:'black',
+              borderWidth:2, 
+              borderRadius:"10px"}}
+               title="ONG" titleStyle={{color:'black'}}/>
+
 </View>
-
-
-<View style={{ alignSelf:'center', backgroundColor:'white',alignItems:"center", top:'80px', width:'300px', height:'90px', borderRadius:"10px", borderWidth:'2px'}}>
-<Button onPress={()=>navigation.navigate('')}  buttonStyle={{backgroundColor:"white", top:"20px", width:"150px", height:"50px"}} title="Pessoa Jurídica" titleStyle={{color:'black'}}/>
-</View>
-
-
-<View style={{ alignSelf:'center', backgroundColor:'black',alignItems:"center", top:'150px', width:'300px', height:'55px', borderRadius:"30px"}}>
-<Button onPress={()=>navigation.navigate('')}  style={{ top:'8px', alignItems:'center'}} buttonStyle={{backgroundColor:"black"}} title="Continuar" titleStyle={{color:"white"}}/>
-</View>
-
-
 </View>
 );};
 

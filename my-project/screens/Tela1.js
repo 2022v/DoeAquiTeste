@@ -19,18 +19,18 @@ export default function Tela1({route,navigation}){
  flexDirection: "column"
  }]}>
  
-<View>
+<View style={{ flex: 1,alignItems:"center", paddingTop:50}} >
 <Image
  source={require('../../my-project/assets/Logo.png')}
- style={{ marginTop:250, width: 400, height: 200 }}
+ style={{ marginTop:200, width: 400, height: 200 }}
 />
  
-<Text style={{ marginTop:20, marginLeft:130, color:'white', fontSize:30}} h1> DOE AQUI! </Text>
+<Text style={{ marginTop:20, color:'white', fontSize:30}} h1> DOE AQUI! </Text>
  
-</View> 
+</View > 
  
-<View style={{ marginTop:200}} >
-<Button style={{ marginTop:100}} buttonStyle={{backgroundColor:'white', borderRadius:30, width:200, height:60, marginLeft:100}} titleStyle={{color:'black', fontSize:20}} type="clear" title="Doe Agora!"/>
+<View style={{ flex: 1,alignItems:"center", paddingTop:50, marginTop:200}} >
+<Button style={{ marginTop:100}} buttonStyle={{backgroundColor:'white', borderRadius:30, width:200, height:60}} titleStyle={{color:'black', fontSize:20}} type="clear" title="Doe Agora!" onPress={()=>navigation.navigate('Login')}/>
 </View>
 </View>
 );};
