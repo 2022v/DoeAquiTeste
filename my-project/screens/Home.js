@@ -14,7 +14,7 @@ export default function Home({route,navigation}){
   return (
 
   <View style={[styles.container, {
-  flexDirection: "column"
+  flexDirection: "column", padding: 0
   }]}>
 
 <View style={{ flex: 0.3}} >
