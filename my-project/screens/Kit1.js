@@ -42,7 +42,7 @@ rightComponent={{ icon: 'home', color: '#fff' }}
 
 <View style={{ flex: 1, alignItems:"center"}}>
     
-<Text style={{paddingTop:"4%"}}> <h1>Kit Infantil</h1></Text>
+<Text style={{paddingTop:"8%", fontSize:"20px"}}> Kit Infantil</Text>
 </View>
 
 <View style={{ flex: 2, alignItems:"center"}} >
