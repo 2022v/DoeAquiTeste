@@ -11,6 +11,7 @@ import LocalizacaoScreen from './screens/Localizacao';
 import RecSenhaScreen from './screens/RecSenha';
 import HomeScreen from './screens/Home';
 import PerfilScreen from './screens/Perfil';
+import Chat from './screens/Chat';
 
 
 // function HomeScreen() {
@@ -36,6 +37,7 @@ return (
 <Stack.Screen name="Localizacao" component={LocalizacaoScreen} options={{ headerShown: false }}/>
 <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }}/>
 <Stack.Screen name="Perfil" component={PerfilScreen} options={{ headerShown: false }}/>
+<Stack.Screen name="Chat" component={Chat} options={{ headerShown: false }}/>
 
 
 
