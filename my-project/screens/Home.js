@@ -28,6 +28,13 @@ backgroundColor="black"
 />
 
 </View>
+
+<View style={{ flex: 1, alignItems:"center", paddingTop:20}}>
+<Button style={{ marginTop:50, width:150}} buttonStyle={{backgroundColor:"black", borderRadius: 20}} title="Entrar" onPress={()=>navigation.navigate('kit1')}/>
+
+
+
+</View>
   
 </View>
 );};

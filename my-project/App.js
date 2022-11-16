@@ -12,7 +12,7 @@ import RecSenhaScreen from './screens/RecSenha';
 import HomeScreen from './screens/Home';
 import PerfilScreen from './screens/Perfil';
 import Chat from './screens/Chat';
-
+import kit1 from './screens/Kit1';
 
 // function HomeScreen() {
 // return (
@@ -27,7 +27,7 @@ const Stack = createNativeStackNavigator();
 function App() {
 return (
 <NavigationContainer>
-<Stack.Navigator initialRouteName="Perfil">
+<Stack.Navigator initialRouteName="Tela1">
 <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
 <Stack.Screen name="Tela1" component={Tela1Screen} options={{ headerShown: false }}/>
 <Stack.Screen name="RecSenha" component={RecSenhaScreen} options={{ headerShown: false }}/>
@@ -38,6 +38,7 @@ return (
 <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }}/>
 <Stack.Screen name="Perfil" component={PerfilScreen} options={{ headerShown: false }}/>
 <Stack.Screen name="Chat" component={Chat} options={{ headerShown: false }}/>
+<Stack.Screen name="kit1" component={kit1} options={{ headerShown: false }}/>
 
 
 
