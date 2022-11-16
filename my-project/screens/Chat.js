@@ -28,7 +28,7 @@ export default function Chat({route,navigation}){
 backgroundColor="black"
   leftComponent={{ icon: 'menu', color: '#fff', iconStyle: { color: '#fff' } }}
   Component={{ icon: 'user', color: '#fff', iconStyle: { color: '#fff' } }}
-  centerComponent= {{ text: 'Larissa Alves', style: { color: '#fff', fontSize:'20px'}}}
+  centerComponent= {{ text: 'Larissa Alves', style: { color: '#fff', fontSize:20}}}
   rightComponent={{ icon: 'home', color: '#fff' }}
 />
 
@@ -54,7 +54,7 @@ backgroundColor="black"
     name="arrow-right"
     size={20}
     color="black"
-  />}  style={{width:"300px", borderWidth:'2px', borderRadius:'10px'}} placeholder={"Digite Aqui."}  />
+  />}  style={{width:300, borderWidth:2, borderRadius:10}} placeholder={"Digite Aqui."}  />
   </View>
 
 

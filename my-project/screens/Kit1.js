@@ -58,10 +58,10 @@ rightComponent={{ icon: 'home', color: '#fff' }}
 
 <View style={{top:-100}}>
 
-<Text style={{paddingTop:"2%", width:"200px", borderWidth:'2px', borderRadius:'10', 
-alignSelf:'center', textAlign:'center', fontSize:'14px', borderRadius:'10px'}}> Kit Infantil Para crianças entre 4 a 6 anos.</Text>
+<Text style={{paddingTop:"2%", width:200, borderWidth:2, borderRadius:10, 
+alignSelf:'center', textAlign:'center', fontSize:14, borderRadius:10}}> Kit Infantil Para crianças entre 4 a 6 anos.</Text>
 
-<Button style={{ marginTop:70, width:180, paddingTop:'20px', alignSelf:'center'}}  buttonStyle={{backgroundColor:"black", borderRadius: 20}} title="Entre em contato" onPress={()=>navigation.navigate('Chat')}/>
+<Button style={{ marginTop:70, width:180, paddingTop:20, alignSelf:'center'}}  buttonStyle={{backgroundColor:"black", borderRadius: 20}} title="Entre em contato" onPress={()=>navigation.navigate('Chat')}/>
   
 </View>
 

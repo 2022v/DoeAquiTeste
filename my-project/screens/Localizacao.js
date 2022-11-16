@@ -41,11 +41,11 @@ export default function Localizacao({route,navigation}){
 
 
 <View style={{ flex: 2, alignItems:"center", paddingTop:50}}>
-<Input   style={{width:"300px"}} placeholder={' Cep'}/>
-<Input   style={{width:"300px"}} placeholder={' Rua'}/>
-<Input   style={{width:"300px"}} placeholder={' Bairro'}/>
-<Input   style={{width:"300px"}} placeholder={"Cidade"}  />
-<Input   style={{width:"300px"}} placeholder={"Estado"}  />
+<Input   style={{width:300}} placeholder={' Cep'}/>
+<Input   style={{width:300}} placeholder={' Rua'}/>
+<Input   style={{width:300}} placeholder={' Bairro'}/>
+<Input   style={{width:300}} placeholder={"Cidade"}  />
+<Input   style={{width:300}} placeholder={"Estado"}  />
 
 </View>
 
