@@ -16,7 +16,7 @@ export default function Chat({route,navigation}){
  return (
  
  <View style={[styles.container, {
- flexDirection: "column"
+ flexDirection: "column", padding:0
  }]}>
  
 

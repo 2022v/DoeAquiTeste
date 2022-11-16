@@ -14,7 +14,7 @@ export default function kit1({route,navigation}){
   return (
 
   <View style={[styles.container, {
-  flexDirection: "column"
+  flexDirection: "column", padding: 0
   }]}>
 
 <View style={{ flex: 0.2}} >
@@ -42,7 +42,7 @@ rightComponent={{ icon: 'home', color: '#fff' }}
 
 <View style={{ flex: 1, alignItems:"center"}}>
     
-<Text style={{paddingTop:"8%", fontSize:"20px"}}> Kit Infantil</Text>
+<Text style={{paddingTop:"8%", fontSize:"30px"}}> Kit Infantil</Text>
 </View>
 
 <View style={{ flex: 2, alignItems:"center"}} >
@@ -56,11 +56,15 @@ rightComponent={{ icon: 'home', color: '#fff' }}
 
 </View>
 
+<View style={{top:-100}}>
+
 <Text style={{paddingTop:"2%", width:"200px", borderWidth:'2px', borderRadius:'10', 
 alignSelf:'center', textAlign:'center', fontSize:'14px', borderRadius:'10px'}}> Kit Infantil Para crianças entre 4 a 6 anos.</Text>
 
-<Button style={{ marginTop:50, width:180, alignSelf:'center'}}  buttonStyle={{backgroundColor:"black", borderRadius: 20}} title="Entre em contato" onPress={()=>navigation.navigate('Chat')}/>
+<Button style={{ marginTop:70, width:180, paddingTop:'20px', alignSelf:'center'}}  buttonStyle={{backgroundColor:"black", borderRadius: 20}} title="Entre em contato" onPress={()=>navigation.navigate('Chat')}/>
   
+</View>
+
 </View>
 );};
 
