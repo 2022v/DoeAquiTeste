@@ -21,14 +21,14 @@ export default function Chat({route,navigation}){
  
 
 
-<View style={{ flex: 0.5}} >
+<View style={{ flex: 0.5}}>
 
-<Header 
+<Header
 
 backgroundColor="black"
   leftComponent={{ icon: 'menu', color: '#fff', iconStyle: { color: '#fff' } }}
   Component={{ icon: 'user', color: '#fff', iconStyle: { color: '#fff' } }}
-  centerComponent={{ text: 'Larissa Alves', style: { color: '#fff', fontSize:'20px'} }}
+  centerComponent= {{ text: 'Larissa Alves', style: { color: '#fff', fontSize:'20px'}}}
   rightComponent={{ icon: 'home', color: '#fff' }}
 />
 
@@ -37,8 +37,8 @@ backgroundColor="black"
 
 
 <View style={{ flex: 2, alignItems:"center", paddingTop:50}}>
-<Text style={{width:"400px", borderWidth:'2px', borderRadius:'10', alignSelf:'flex-start', fontSize:'20px', borderRadius:'10px'}}> Olá tudo bem?  </Text>
-<Text style={{width:"400px", borderWidth:'2px', borderRadius:'10', alignSelf:'flex-end', fontSize:'20px', borderRadius:'10px'}}> Como posso Ajudar?  </Text>
+<Text style={{width:400, borderWidth:2, borderRadius:10, alignSelf:'flex-start', fontSize:20, borderRadius:10}}> Olá tudo bem?  </Text>
+<Text style={{width:400, borderWidth:2, borderRadius:10, alignSelf:'flex-end', fontSize:20, borderRadius:10}}> Como posso Ajudar?  </Text>
 
 
 
