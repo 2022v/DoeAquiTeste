@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { Avatar } from 'react-native-elements';
+import { Avatar, Header } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Input } from 'react-native-elements';
 import { Button } from 'react-native-elements';
@@ -19,38 +19,43 @@ export default function Chat({route,navigation}){
  flexDirection: "column"
  }]}>
  
-<View style={{borderWidth:2,width:'2000px', alignSelf:"center", alignItems:'center', backgroundColor:'black'
-            }}> 
 
-    <Button lefticon={
+
+<View style={{ flex: 0.5}} >
+
+<Header 
+
+backgroundColor="black"
+  leftComponent={{ icon: 'menu', color: '#fff', iconStyle: { color: '#fff' } }}
+  Component={{ icon: 'user', color: '#fff', iconStyle: { color: '#fff' } }}
+  centerComponent={{ text: 'Larissa Alves', style: { color: '#fff', fontSize:'20px'} }}
+  rightComponent={{ icon: 'home', color: '#fff' }}
+/>
+
+</View>
+
+
+
+<View style={{ flex: 2, alignItems:"center", paddingTop:50}}>
+<Text style={{width:"400px", borderWidth:'2px', borderRadius:'10', alignSelf:'flex-start', fontSize:'20px', borderRadius:'10px'}}> Olá tudo bem?  </Text>
+<Text style={{width:"400px", borderWidth:'2px', borderRadius:'10', alignSelf:'flex-end', fontSize:'20px', borderRadius:'10px'}}> Como posso Ajudar?  </Text>
+
+
+
+
+
+</View>
+
+
+<View style={{paddingTop:'40%'}}>
+
+<Input rightIcon={
   <Icon
-    name="user"
-    size={24}
-    color="white"
-  />} buttonStyle={{backgroundColor:"white",
-              width:"300px", 
-              height:"90px",
-              borderColor:'black',
-              backgroundColor:'black',
-              borderWidth:2,
-              borderRadius:"10px"}}
-               title="Larissa Alves" titleStyle={{color:'white'}}
-               />
-
-               
-
-
-</View>
-
-
-<View style={{borderWidth:2, alignSelf:"center", alignItems:'center', backgroundColor:'', top:'80%', borderRadius:'25px'
-            }}> 
-
-
-<Input  rightIcon={<Icon name='arrow-right'size={18} color='black'/>} style={{width:"1800px", height:'20px', bottom:'1%'}} placeholder={'Digite Aqui!'}/>
-
-
-</View>
+    name="arrow-right"
+    size={20}
+    color="black"
+  />}  style={{width:"300px", borderWidth:'2px', borderRadius:'10px'}} placeholder={"Digite Aqui."}  />
+  </View>
 
 
 </View>

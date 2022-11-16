@@ -48,7 +48,7 @@ export default function Perfil({route,navigation}){
 
 
 <View style={{ flex: 1, alignItems:"center", paddingTop:50}}>
-<Button style={{ marginTop:50, width:200}} buttonStyle={{backgroundColor:"black", borderRadius: 20}} title="Entrar em Contato" onPress={()=>navigation.navigate('')}/>
+<Button style={{ marginTop:50, width:200}} buttonStyle={{backgroundColor:"black", borderRadius: 20}} title="Entrar em Contato" onPress={()=>navigation.navigate('Chat')}/>
 
 </View>
 
