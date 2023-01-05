@@ -19,10 +19,10 @@ export default function Tela1({route,navigation}){
  flexDirection: "column"
  }]}>
  
-<View style={{ flex: 1,alignItems:"center", paddingTop:50}} >
+<View style={{ flex: 3,alignItems:"center", paddingTop:50}} >
 <Image
  source={require('../../my-project/assets/Logo.png')}
- style={{ marginTop:200, width: 400, height: 200 }}
+ style={{ marginTop:220, width: 400, height: 200 }}
 />
  
 <Text style={{ marginTop:20, color:'white', fontSize:30}} h1> DOE AQUI! </Text>

@@ -5,7 +5,7 @@ host : 'localhost',
 port : '3306',
 user : 'root',
 password : '1234',
-database : 'doeAqui'
+database : 'doeaqui'
 });
 
 connection.query(sqlQry, function(error, results, fields){
