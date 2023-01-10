@@ -1,50 +1,87 @@
-import * as React from 'react';
-import { View, Text } from 'react-native';
+import React, { useState, createContext, useContext, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import LoginScreen from './screens/Login';
-import Tela1Screen from './screens/Tela1';
-import cadastroScreen from './screens/Cadastro';
-import cadastroPFScreen from './screens/CadastroPF';
-import cadastroONGScreen from './screens/CadastroONG';
-import LocalizacaoScreen from './screens/Localizacao';
-import RecSenhaScreen from './screens/RecSenha';
-import HomeScreen from './screens/Home';
-import PerfilScreen from './screens/Perfil';
+import { createStackNavigator } from '@react-navigation/stack';
+import { View, ActivityIndicator } from 'react-native';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from './config/firebase';
+import Login from './screens/Login';
+import Signup from './screens/Signup';
 import Chat from './screens/Chat';
-import kit1 from './screens/Kit1';
+import Home from './screens/Home';
+import Splash from './screens/Splash';
+import Perfil from './screens/Perfil';
 
-// function HomeScreen() {
-// return (
-// <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-// <Text>Home Screen</Text>
-// </View>
-// );
-// }
 
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
+const AuthenticatedUserContext = createContext({});
 
-function App() {
+const AuthenticatedUserProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
 return (
-<NavigationContainer>
-<Stack.Navigator initialRouteName="Tela1">
-<Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
-<Stack.Screen name="Tela1" component={Tela1Screen} options={{ headerShown: false }}/>
-<Stack.Screen name="RecSenha" component={RecSenhaScreen} options={{ headerShown: false }}/>
-<Stack.Screen name="Cadastro" component={cadastroScreen} options={{ headerShown: false }}/>
-<Stack.Screen name="CadastroPF" component={cadastroPFScreen} options={{ headerShown: false }}/>
-<Stack.Screen name="CadastroONG" component={cadastroONGScreen} options={{ headerShown: false }}/>
-<Stack.Screen name="Localizacao" component={LocalizacaoScreen} options={{ headerShown: false }}/>
-<Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }}/>
-<Stack.Screen name="Perfil" component={PerfilScreen} options={{ headerShown: false }}/>
-<Stack.Screen name="Chat" component={Chat} options={{ headerShown: false }}/>
-<Stack.Screen name="kit1" component={kit1} options={{ headerShown: false }}/>
+    <AuthenticatedUserContext.Provider value={{ user, setUser }}>
+      {children}
+    </AuthenticatedUserContext.Provider>
+  );
+};
 
 
-
-</Stack.Navigator>
-</NavigationContainer>
-);
+function ChatStack() {
+  return (
+    <Stack.Navigator defaultScreenOptions={Home}>
+      <Stack.Screen name='Home' component={Home} />
+      <Stack.Screen name='Chat' component={Chat} />
+      <Stack.Screen name='Perfil' component={Perfil} />
+    </Stack.Navigator>
+  );
 }
 
-export default App;
+
+
+
+function AuthStack() {
+  return (
+   <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name='Splash' component={Splash} />
+      <Stack.Screen name='Login' component={Login} />
+      <Stack.Screen name='Signup' component={Signup} />
+    </Stack.Navigator>
+  );
+}
+
+function RootNavigator() {
+  const { user, setUser } = useContext(AuthenticatedUserContext);
+  const [isLoading, setIsLoading] = useState(true);
+useEffect(() => {
+    // onAuthStateChanged returns an unsubscriber
+    const unsubscribeAuth = onAuthStateChanged(
+      auth,
+      async authenticatedUser => {
+        authenticatedUser ? setUser(authenticatedUser) : setUser(null);
+        setIsLoading(false);
+      }
+    );
+// unsubscribe auth listener on unmount
+    return unsubscribeAuth;
+  }, [user]);
+if (isLoading) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <ActivityIndicator size='large' />
+      </View>
+    );
+  }
+
+return (
+    <NavigationContainer>
+      {user ? <ChatStack /> : <AuthStack />}
+    </NavigationContainer>
+  );
+}
+
+export default function App() {
+  return (
+    <AuthenticatedUserProvider>
+      <RootNavigator />
+    </AuthenticatedUserProvider>
+  );
+}

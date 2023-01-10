@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, Button, TextInput, Image, SafeAreaView, TouchableOpacity, StatusBar, Alert } from "react-native";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../config/firebase";
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../config/firebase';
 const backImage = require("../assets/Logo.png");
 
-export default function Login({ navigation }) {
+export default function Signup({ navigation }) {
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const onHandleLogin = () => {
-    if (email !== "" && password !== "") {
-      signInWithEmailAndPassword(auth, email, password)
-        .then(() => console.log("Login success"))
+const onHandleSignup = () => {
+    if (email !== '' && password !== '') {
+  createUserWithEmailAndPassword(auth, email, password)
+        .then(() => console.log('Signup success'))
         .catch((err) => Alert.alert("Login error", err.message));
     }
   };
@@ -22,9 +22,10 @@ export default function Login({ navigation }) {
       <Image source={backImage} style={styles.backImage} />
       <View style={styles.whiteSheet} />
       <SafeAreaView style={styles.form}>
+        <Text style={styles.title}>Sign Up</Text>
          <TextInput
         style={styles.input}
-        placeholder="Email"
+        placeholder="Enter email"
         autoCapitalize="none"
         keyboardType="email-address"
         textContentType="emailAddress"
@@ -34,7 +35,7 @@ export default function Login({ navigation }) {
       />
       <TextInput
         style={styles.input}
-        placeholder="Senha"
+        placeholder="Enter password"
         autoCapitalize="none"
         autoCorrect={false}
         secureTextEntry={true}
@@ -42,13 +43,13 @@ export default function Login({ navigation }) {
         value={password}
         onChangeText={(text) => setPassword(text)}
       />
-      <TouchableOpacity style={styles.button} onPress={onHandleLogin}>
-        <Text style={{fontWeight: 'bold', color: '#fff', fontSize: 18}}> Entrar </Text>
+      <TouchableOpacity style={styles.button} onPress={onHandleSignup}>
+        <Text style={{fontWeight: 'bold', color: '#fff', fontSize: 18}}> Sign Up</Text>
       </TouchableOpacity>
       <View style={{marginTop: 20, flexDirection: 'row', alignItems: 'center', alignSelf: 'center'}}>
-        <Text style={{color: 'gray', fontWeight: '600', fontSize: 14}}>Não possui uma conta? </Text>
-        <TouchableOpacity onPress={() => navigation.navigate("Signup")}>
-          <Text style={{color: 'black', fontWeight: '600', fontSize: 14}}> Cadastar-se </Text>
+        <Text style={{color: 'gray', fontWeight: '600', fontSize: 14}}>Don't have an account? </Text>
+        <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+          <Text style={{color: '#f57c00', fontWeight: '600', fontSize: 14}}> Log In</Text>
         </TouchableOpacity>
       </View>
       </SafeAreaView>
@@ -61,6 +62,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
   },
+  title: {
+    fontSize: 36,
+    fontWeight: 'bold',
+    color: "orange",
+    alignSelf: "center",
+    paddingBottom: 24,
+  },
   input: {
     backgroundColor: "#F6F7FB",
     height: 58,
@@ -68,18 +76,17 @@ const styles = StyleSheet.create({
     fontSize: 16,
     borderRadius: 10,
     padding: 12,
-    marginTop:5
   },
   backImage: {
     width: "100%",
-    height: 300,
+    height: 340,
     position: "absolute",
     top: 0,
     resizeMode: 'cover',
   },
   whiteSheet: {
     width: '100%',
-    height: '70%',
+    height: '75%',
     position: "absolute",
     bottom: 0,
     backgroundColor: '#fff',
@@ -91,7 +98,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 30,
   },
   button: {
-    backgroundColor: 'black',
+    backgroundColor: '#f57c00',
     height: 58,
     borderRadius: 10,
     justifyContent: 'center',

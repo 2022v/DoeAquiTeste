@@ -1,10 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { Avatar } from 'react-native-elements';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import { Input } from 'react-native-elements';
 import { Button } from 'react-native-elements';
-import { ActivityIndicator } from 'react-native';
 import { Image } from 'react-native-elements';
  
  

@@ -1,70 +1,104 @@
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { Avatar, Header } from 'react-native-elements';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import { Input } from 'react-native-elements';
-import { Button } from 'react-native-elements';
-import { ActivityIndicator } from 'react-native';
-import { Image } from 'react-native-elements';
- 
- 
- 
- 
-export default function Chat({route,navigation}){
- 
- 
- return (
- 
- <View style={[styles.container, {
- flexDirection: "column", padding:0
- }]}>
- 
+import React, {
+  useState,
+  useEffect,
+  useLayoutEffect,
+  useCallback
+} from 'react';
+import { TouchableOpacity, Text } from 'react-native';
+import { GiftedChat } from 'react-native-gifted-chat';
+import {
+  collection,
+  addDoc,
+  orderBy,
+  query,
+  onSnapshot
+} from 'firebase/firestore';
+import { signOut } from 'firebase/auth';
+import { auth, database } from '../config/firebase';
+import { useNavigation } from '@react-navigation/native';
+import { AntDesign } from '@expo/vector-icons';
+import colors from '../colors';
 
 
-<View style={{ flex: 0.5}}>
+export default function Chat() {
 
-<Header
+  const [messages, setMessages] = useState([]);
+  const navigation = useNavigation();
 
-backgroundColor="black"
-  leftComponent={{ icon: 'menu', color: '#fff', iconStyle: { color: '#fff' } }}
-  Component={{ icon: 'user', color: '#fff', iconStyle: { color: '#fff' } }}
-  centerComponent= {{ text: 'Larissa Alves', style: { color: '#fff', fontSize:20}}}
-  rightComponent={{ icon: 'home', color: '#fff' }}
-/>
+const onSignOut = () => {
+    signOut(auth).catch(error => console.log('Error logging out: ', error));
+  };
 
-</View>
+  useLayoutEffect(() => {
+      navigation.setOptions({
+        headerRight: () => (
+          <TouchableOpacity
+            style={{
+              marginRight: 10
+            }}
+            onPress={onSignOut}
+          >
+            <AntDesign name="logout" size={24} color={colors.gray} style={{marginRight: 10}}/>
+          </TouchableOpacity>
+        )
+      });
+    }, [navigation]);
 
+  useLayoutEffect(() => {
 
+      const collectionRef = collection(database, 'chats');
+      const q = query(collectionRef, orderBy('createdAt', 'desc'));
 
-<View style={{ flex: 2, alignItems:"center", paddingTop:50}}>
-<Text style={{width:400, borderWidth:2, borderRadius:10, alignSelf:'flex-start', fontSize:20, borderRadius:10}}> Olá tudo bem?  </Text>
-<Text style={{width:400, borderWidth:2, borderRadius:10, alignSelf:'flex-end', fontSize:20, borderRadius:10}}> Como posso Ajudar?  </Text>
+  const unsubscribe = onSnapshot(q, querySnapshot => {
+      console.log('querySnapshot unsusbscribe');
+        setMessages(
+          querySnapshot.docs.map(doc => ({
+            _id: doc.data()._id,
+            createdAt: doc.data().createdAt.toDate(),
+            text: doc.data().text,
+            user: doc.data().user
+          }))
+        );
+      });
+  return unsubscribe;
+    }, []);
 
+  const onSend = useCallback((messages = []) => {
+      setMessages(previousMessages =>
+        GiftedChat.append(previousMessages, messages)
+      );
+      // setMessages([...messages, ...messages]);
+      const { _id, createdAt, text, user } = messages[0];    
+      addDoc(collection(database, 'chats'), {
+        _id,
+        createdAt,
+        text,
+        user
+      });
+    }, []);
 
-
-
-
-</View>
-
-
-<View style={{paddingTop:'40%'}}>
-
-<Input rightIcon={
-  <Icon
-    name="arrow-right"
-    size={20}
-    color="black"
-  />}  style={{width:300, borderWidth:2, borderRadius:10}} placeholder={"Digite Aqui."}  />
-  </View>
-
-
-</View>
-);};
- 
-const styles = StyleSheet.create({
- container: {
- flex: 1,
- padding: 20,
- backgroundColor:'White'
- },
-  });
+    return (
+      // <>
+      //   {messages.map(message => (
+      //     <Text key={message._id}>{message.text}</Text>
+      //   ))}
+      // </>
+      <GiftedChat
+        messages={messages}
+        showAvatarForEveryMessage={false}
+        showUserAvatar={false}
+        onSend={messages => onSend(messages)}
+        messagesContainerStyle={{
+          backgroundColor: '#fff'
+        }}
+        textInputStyle={{
+          backgroundColor: '#fff',
+          borderRadius: 20,
+        }}
+        user={{
+          _id: auth?.currentUser?.email,
+          avatar: 'https://i.pravatar.cc/300'
+        }}
+      />
+    );
+}

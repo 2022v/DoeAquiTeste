@@ -1,75 +1,75 @@
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { Avatar } from 'react-native-elements';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import { Input } from 'react-native-elements';
-import { Button } from 'react-native-elements';
-import { Header } from 'react-native-elements';
-import { SearchBar } from 'react-native-elements';
-import {  Image, ScrollView } from 'react-native'
-import { Card, ListItem } from 'react-native-elements'
+import React, { useEffect } from "react";
+import { View, TouchableOpacity, Text, Image, StyleSheet } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { FontAwesome } from '@expo/vector-icons';
+import colors from '../colors';
+import { Entypo } from '@expo/vector-icons';
+const Avatar = require("../assets/Avatar.png");
+const Home = () => {
+
+    const navigation = useNavigation();
+
+    useEffect(() => {
+        navigation.setOptions({
+            headerLeft: () => (
+                <FontAwesome name="search" size={24} color={colors.gray} style={{marginLeft: 15}}/>
+            ),
+            headerRight: () => (
+                <Image 
+                source={Avatar}
+                    style={{
+                        width: 40,
+                        height: 40,
+                        marginRight: 15,
+                    }}
+                />
+            ),
+        });
+    }, [navigation ]);
+
+    return (
+        <View style={styles.container}>
 
 
-export default function Home({route,navigation}){
+
+            <TouchableOpacity
+                onPress={() => navigation.navigate("Chat")}
+                style={styles.chatButton}
+            >
+                <Entypo name="chat" size={24} color={colors.lightGray} />
+            </TouchableOpacity>
 
 
-  return (
+        </View>
 
-  <View style={[styles.container, {
-  flexDirection: "column", padding: 0
-  }]}>
+       
+    );
+    };
 
-<View style={{ }} >
+    export default Home;
 
-<Header 
-
-backgroundColor="black"
-  leftComponent={{ icon: 'menu', color: '#fff', iconStyle: { color: '#fff' } }}
-  centerComponent={{ text: 'DoeAqui', style: { color: '#fff' } }}
-  rightComponent={{ icon: 'home', color: '#fff' }}
-/>
-
-</View>
-
-<View style={{ flex: 1}}> 
-<ScrollView>
-  <Card>
-   <Card.Title>Kit Infantil</Card.Title>
-   <Card.Divider/>
-   <Card.Image source={require('../assets/kit.jpg')} onPress={()=>navigation.navigate("kit1")}>
-   </Card.Image>
-  </Card>
-
-  <Card>
-   <Card.Title>Kit Infantil</Card.Title>
-   <Card.Divider/>
-   <Card.Image source={require('../assets/kit.jpg')} onPress={()=>navigation.navigate("kit1")}>
-   </Card.Image>
-  </Card>
-
-  <Card>
-   <Card.Title>Kit Infantil</Card.Title>
-   <Card.Divider/>
-   <Card.Image source={require('../assets/kit.jpg')} onPress={()=>navigation.navigate("kit1")}>
-   </Card.Image>
-  </Card>
-
-  <Card>
-   <Card.Title>Kit Infantil</Card.Title>
-   <Card.Divider/>
-   <Card.Image source={require('../assets/kit.jpg')} onPress={()=>navigation.navigate("kit1")}>
-   </Card.Image>
-  </Card>
-  </ScrollView> 
-</View>
-
-</View>
-);};
-
-const styles = StyleSheet.create({
-  container: {
-  flex: 1,
-  padding: 20,
-  backgroundColor:'white'
-  },
-  });
+    const styles = StyleSheet.create({
+        container: {
+            flex: 1,
+            justifyContent: 'flex-end',
+            alignItems: 'flex-end',
+            backgroundColor: "#fff",
+        },
+        chatButton: {
+            backgroundColor: colors.primary,
+            height: 50,
+            width: 50,
+            borderRadius: 25,
+            alignItems: 'center',
+            justifyContent: 'center',
+            shadowColor: colors.primary,
+            shadowOffset: {
+                width: 0,
+                height: 2,
+            },
+            shadowOpacity: .9,
+            shadowRadius: 8,
+            marginRight: 20,
+            marginBottom: 50,
+        }
+    });
