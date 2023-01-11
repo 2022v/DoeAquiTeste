@@ -30,7 +30,7 @@ function ChatStack() {
     <Stack.Navigator defaultScreenOptions={Home}>
       <Stack.Screen name='Home' component={Home} />
       <Stack.Screen name='Chat' component={Chat} />
-      <Stack.Screen name='Perfil' component={Perfil} />
+      <Stack.Screen name='Perfil' component={Perfil}  />
     </Stack.Navigator>
   );
 }
