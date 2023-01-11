@@ -22,7 +22,7 @@ const onHandleSignup = () => {
       <Image source={backImage} style={styles.backImage} />
       <View style={styles.whiteSheet} />
       <SafeAreaView style={styles.form}>
-        <Text style={styles.title}>Sign Up</Text>
+        <Text style={styles.title}>Cadastre-se</Text>
          <TextInput
         style={styles.input}
         placeholder="Enter email"
@@ -44,12 +44,12 @@ const onHandleSignup = () => {
         onChangeText={(text) => setPassword(text)}
       />
       <TouchableOpacity style={styles.button} onPress={onHandleSignup}>
-        <Text style={{fontWeight: 'bold', color: '#fff', fontSize: 18}}> Sign Up</Text>
+        <Text style={{fontWeight: 'bold', color: '#fff', fontSize: 18}}>Cadastrar-se</Text>
       </TouchableOpacity>
       <View style={{marginTop: 20, flexDirection: 'row', alignItems: 'center', alignSelf: 'center'}}>
-        <Text style={{color: 'gray', fontWeight: '600', fontSize: 14}}>Don't have an account? </Text>
+        <Text style={{color: 'gray', fontWeight: '600', fontSize: 14}}>Já possui uma conta? </Text>
         <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-          <Text style={{color: '#f57c00', fontWeight: '600', fontSize: 14}}> Log In</Text>
+          <Text style={{color: 'black', fontWeight: '600', fontSize: 14}}> Entrar </Text>
         </TouchableOpacity>
       </View>
       </SafeAreaView>
@@ -65,9 +65,10 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 36,
     fontWeight: 'bold',
-    color: "orange",
+    color: "black",
     alignSelf: "center",
     paddingBottom: 24,
+    marginTop:120
   },
   input: {
     backgroundColor: "#F6F7FB",
@@ -76,17 +77,18 @@ const styles = StyleSheet.create({
     fontSize: 16,
     borderRadius: 10,
     padding: 12,
+    marginTop:5
   },
   backImage: {
     width: "100%",
-    height: 340,
+    height: 300,
     position: "absolute",
     top: 0,
     resizeMode: 'cover',
   },
   whiteSheet: {
     width: '100%',
-    height: '75%',
+    height: '70%',
     position: "absolute",
     bottom: 0,
     backgroundColor: '#fff',
@@ -98,7 +100,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 30,
   },
   button: {
-    backgroundColor: '#f57c00',
+    backgroundColor: 'black',
     height: 58,
     borderRadius: 10,
     justifyContent: 'center',

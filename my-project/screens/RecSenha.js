@@ -4,7 +4,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../config/firebase";
 const backImage = require("../assets/Logo.png");
 
-export default function Login({ navigation }) {
+export default function RecSenha({ navigation }) {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -32,18 +32,9 @@ export default function Login({ navigation }) {
         value={email}
         onChangeText={(text) => setEmail(text)}
       />
-      <TextInput
-        style={styles.input}
-        placeholder="Senha"
-        autoCapitalize="none"
-        autoCorrect={false}
-        secureTextEntry={true}
-        textContentType="password"
-        value={password}
-        onChangeText={(text) => setPassword(text)}
-      />
+     
       <TouchableOpacity style={styles.button} onPress={onHandleLogin}>
-        <Text style={{fontWeight: 'bold', color: '#fff', fontSize: 18}}> Entrar </Text>
+        <Text style={{fontWeight: 'bold', color: '#fff', fontSize: 18}}> Recuperar </Text>
       </TouchableOpacity>
       <View style={{marginTop: 20, flexDirection: 'row', alignItems: 'center', alignSelf: 'center'}}>
         <Text style={{color: 'gray', fontWeight: '600', fontSize: 14}}>Não possui uma conta? </Text>
@@ -51,11 +42,6 @@ export default function Login({ navigation }) {
           <Text style={{color: 'black', fontWeight: '600', fontSize: 14}}> Cadastar-se </Text>
         </TouchableOpacity>
       </View>
-      <View style={{ marginTop:10,flexDirection: 'row', alignItems: 'center', alignSelf: 'center'}}>
-      <TouchableOpacity onPress={() => navigation.navigate("RecSenha")}>
-      <Text style={{color: 'black', fontWeight: '600', fontSize: 14}}>Esqueceu sua Senha? </Text>
-      </TouchableOpacity>
-     </View>
       </SafeAreaView>
       <StatusBar barStyle="light-content" />
 

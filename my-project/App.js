@@ -10,6 +10,7 @@ import Chat from './screens/Chat';
 import Home from './screens/Home';
 import Splash from './screens/Splash';
 import Perfil from './screens/Perfil';
+import RecSenha from './screens/RecSenha';
 
 
 const Stack = createStackNavigator();
@@ -44,6 +45,8 @@ function AuthStack() {
       <Stack.Screen name='Splash' component={Splash} />
       <Stack.Screen name='Login' component={Login} />
       <Stack.Screen name='Signup' component={Signup} />
+      <Stack.Screen name='RecSenha' component={RecSenha} />
+
     </Stack.Navigator>
   );
 }
