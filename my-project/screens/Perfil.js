@@ -15,16 +15,6 @@ export default function Perfil({route,navigation}){
   }]}>
 
 
-<View style={{ flex: 0.3}} >
-
-<Icon
-  onPress={()=>navigation.navigate('Home')}
-  name='arrow-left'
-  color='black' 
-  size={20}/>
-
-</View>
-
 
 <View style={{ flex: 3,alignItems:"center", paddingTop:50}} >
 

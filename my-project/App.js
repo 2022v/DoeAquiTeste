@@ -11,6 +11,8 @@ import Home from './screens/Home';
 import Splash from './screens/Splash';
 import Perfil from './screens/Perfil';
 import RecSenha from './screens/RecSenha';
+import CadProd from './screens/CadProd';
+
 
 
 const Stack = createStackNavigator();
@@ -32,6 +34,7 @@ function ChatStack() {
       <Stack.Screen name='Home' component={Home} />
       <Stack.Screen name='Chat' component={Chat} />
       <Stack.Screen name='Perfil' component={Perfil}  />
+      <Stack.Screen name='CadProd' component={CadProd}  />
     </Stack.Navigator>
   );
 }

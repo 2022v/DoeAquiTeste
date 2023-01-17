@@ -44,11 +44,30 @@ const Home = () => {
 
     return (
 
+ <View >
+
+<View style={{backgroundColor:'white' }}>
+<TouchableOpacity
+    onPress={() => navigation.navigate("CadProd")}
+    style={styles.chatButton}
+>
+    <Entypo name="plus" size={20} color={colors.lightGray} />
+</TouchableOpacity>
+
+<TouchableOpacity
+                onPress={() => navigation.navigate("Chat")}
+                style={styles.chatButton}
+            >
+                <Entypo name="chat" size={20} color={colors.lightGray} />
+</TouchableOpacity>
+ 
+ </View>
        
-        <View style={styles.container}>
+<View style={styles.container}>
 
 <View style={{bottom: 480, right:40, width: 350, flex:0.3}}>
 {/* <ScrollView> */}
+
 
 <Card style={{width:100}}>
   <Card.Title>Kit Infantil</Card.Title>
@@ -87,15 +106,11 @@ const Home = () => {
 
 </View>
 
-            <TouchableOpacity
-                onPress={() => navigation.navigate("Chat")}
-                style={styles.chatButton}
-            >
-                <Entypo name="chat" size={24} color={colors.lightGray} />
-            </TouchableOpacity>
+           
 
 
         </View>
+        </View>     
 
 
 
@@ -114,21 +129,22 @@ const Home = () => {
             backgroundColor: "#fff",
            
         },
+      
         chatButton: {
-            backgroundColor: colors.primary,
-            height: 50,
-            width: 50,
-            borderRadius: 25,
-            alignItems: 'center',
-            justifyContent: 'center',
-            shadowColor: colors.primary,
-            shadowOffset: {
-                width: 0,
-                height: 2,
-            },
-            shadowOpacity: .9,
-            shadowRadius: 8,
-            marginRight: 20,
-            marginBottom: 50,
-        }
+          marginTop:15,
+          backgroundColor: colors.primary,
+          height: 40,
+          width: 40,
+          borderRadius: 25,
+          alignItems: 'center',
+          justifyContent: 'center',
+          shadowColor: colors.primary,
+          shadowOffset: {
+              width: 0,
+              height: 2,
+          },
+          shadowOpacity: .9,
+          shadowRadius: 8,
+          marginLeft: 350,
+      },
     });
