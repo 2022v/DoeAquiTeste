@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, Button, TextInput, Image, SafeAreaView, TouchableOpacity, StatusBar, Alert } from "react-native";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { sendPasswordResetEmail} from "firebase/auth";
 import { auth } from "../config/firebase";
 const backImage = require("../assets/Logo.png");
 
@@ -9,11 +9,14 @@ export default function RecSenha({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const onHandleLogin = () => {
-    if (email !== "" && password !== "") {
-      signInWithEmailAndPassword(auth, email, password)
-        .then(() => console.log("Login success"))
-        .catch((err) => Alert.alert("Login error", err.message));
+  const resetPassword= () => {
+    if (email !== "")
+     {
+     sendPasswordResetEmail(auth, email)
+        .then(() => {
+          alert("email enviado com sucesso");
+        })
+        .catch((err) => Alert.alert("error no envio do email", err.message));
     }
   };
   
@@ -33,7 +36,7 @@ export default function RecSenha({ navigation }) {
         onChangeText={(text) => setEmail(text)}
       />
      
-      <TouchableOpacity style={styles.button} onPress={onHandleLogin}>
+      <TouchableOpacity style={styles.button} onPress={resetPassword}>
         <Text style={{fontWeight: 'bold', color: '#fff', fontSize: 18}}> Recuperar </Text>
       </TouchableOpacity>
       <View style={{marginTop: 20, flexDirection: 'row', alignItems: 'center', alignSelf: 'center'}}>
