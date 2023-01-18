@@ -1,11 +1,29 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Button, TextInput, Image, SafeAreaView, TouchableOpacity, StatusBar, Alert } from "react-native";
 const backImage = require("../assets/Logo.png");
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import { getFirestore } from 'firebase/firestore';
+import { Constants } from 'expo-constants';
+import { collection, addDoc } from 'firebase/firestore';
+import { async } from '@firebase/util';
+import { database } from '../config/firebase';
+
 
 export default function CadProd({ navigation })
 {
 
-   
+
+const submit = async () => {
+    await addDoc(collection(database,'produtos'), newItem)
+}
+
+const [newItem, setNewItem] = React.useState({
+
+  nome: '',
+  descricao: '',
+  CreateAt: new Date(),
+})
 
   return (
     <View style={styles.container}>
@@ -15,7 +33,7 @@ export default function CadProd({ navigation })
          <TextInput
         style={styles.input}
         placeholder="Nome Produto"
-        
+        onChangeText={(text) => setNewItem({...newItem, nome:text})}
         
         
       />
@@ -23,10 +41,11 @@ export default function CadProd({ navigation })
         style={styles.input}
         placeholder="Descrição do Produto"
         keyboardType="desc"
+        onChangeText={(text) => setNewItem({...newItem, descricao:text})}
        
         
       />
-      <TouchableOpacity style={styles.button} onPress={''}>
+      <TouchableOpacity style={styles.button} onPress={submit}>
         <Text style={{fontWeight: 'bold', color: '#fff', fontSize: 18}}>Cadastrar</Text>
       </TouchableOpacity>
 
@@ -93,4 +112,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 40,
   },
+
+  
 });
