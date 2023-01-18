@@ -12,6 +12,7 @@ import Splash from './screens/Splash';
 import Perfil from './screens/Perfil';
 import RecSenha from './screens/RecSenha';
 import CadProd from './screens/CadProd';
+import Produto from './screens/Produto';
 
 
 
@@ -35,6 +36,7 @@ function ChatStack() {
       <Stack.Screen name='Chat' component={Chat} />
       <Stack.Screen name='Perfil' component={Perfil}  />
       <Stack.Screen name='CadProd' component={CadProd}  />
+      <Stack.Screen name= 'Produto' component={Produto} />
     </Stack.Navigator>
   );
 }

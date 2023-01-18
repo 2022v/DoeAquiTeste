@@ -69,10 +69,10 @@ const Home = () => {
 {/* <ScrollView> */}
 
 
-<Card style={{width:100}}>
+<Card style={{width:100}} >
   <Card.Title>Kit Infantil</Card.Title>
   <Card.Divider/>
-  <Card.Image source={require('../assets/kit.jpg')}>
+  <Card.Image source={require('../assets/kit.jpg')} onPress={() => navigation.navigate("Produto")}>
     <Text style={{marginBottom: 10, top:100}}>
     </Text>
     
@@ -125,13 +125,13 @@ const Home = () => {
         container: {
             flex: 1,
             justifyContent: 'flex-end',
-            alignItems: 'flex-end',
+            alignItems: 'center',
             backgroundColor: "#fff",
            
         },
       
         chatButton: {
-          marginTop:15,
+          marginTop:20,
           backgroundColor: colors.primary,
           height: 40,
           width: 40,

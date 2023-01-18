@@ -16,6 +16,7 @@ export default function CadProd({ navigation })
 
 const submit = async () => {
     await addDoc(collection(database,'produtos'), newItem)
+    navigation.goBack()
 }
 
 const [newItem, setNewItem] = React.useState({
