@@ -44,6 +44,7 @@ const onSignOut = () => {
       });
     }, [navigation]);
 
+
   useLayoutEffect(() => {
 
       const collectionRef = collection(database, 'chats');

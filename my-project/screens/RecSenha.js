@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View, Button, TextInput, Image, SafeAreaView, TouchableOpacity, StatusBar, Alert } from "react-native";
 import { sendPasswordResetEmail} from "firebase/auth";
 import { auth } from "../config/firebase";
+import Home from "./Home";
 const backImage = require("../assets/Logo.png");
 
 export default function RecSenha({ navigation }) {
@@ -9,12 +10,14 @@ export default function RecSenha({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  
+
   const resetPassword= () => {
     if (email !== "")
      {
      sendPasswordResetEmail(auth, email)
         .then(() => {
-          alert("email enviado com sucesso");
+          alert ("email enviado com sucesso"); 
         })
         .catch((err) => Alert.alert("error no envio do email", err.message));
     }
@@ -36,9 +39,17 @@ export default function RecSenha({ navigation }) {
         onChangeText={(text) => setEmail(text)}
       />
      
-      <TouchableOpacity style={styles.button} onPress={resetPassword}>
-        <Text style={{fontWeight: 'bold', color: '#fff', fontSize: 18}}> Recuperar </Text>
+      <TouchableOpacity style={styles.button} onPress={resetPassword} >
+        <Text style= {{fontWeight: 'bold', color: '#fff', fontSize: 18}}> Recuperar </Text>
       </TouchableOpacity>
+      
+      <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate('Login')} >
+        <Text style= {{fontWeight: 'bold', color: '#fff', fontSize: 18}}> Voltar </Text>
+      </TouchableOpacity>
+      
+
+
+
       <View style={{marginTop: 20, flexDirection: 'row', alignItems: 'center', alignSelf: 'center'}}>
         <Text style={{color: 'gray', fontWeight: '600', fontSize: 14}}>Não possui uma conta? </Text>
         <TouchableOpacity onPress={() => navigation.navigate("Signup")}>
