@@ -6,6 +6,7 @@ const backImage = require("../assets/Logo.png");
 
 export default function Signup({ navigation }) {
 
+  const [fullName, setFullName] = useState('')
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -23,6 +24,14 @@ const onHandleSignup = () => {
       <View style={styles.whiteSheet} />
       <SafeAreaView style={styles.form}>
         <Text style={styles.title}>Cadastre-se</Text>
+        <TextInput
+                    style={styles.input}
+                    placeholder='Nome Completo'
+                    onChangeText={(text) => setFullName(text)}
+                    value={fullName}
+                    autoCapitalize="none"
+                />
+        
          <TextInput
         style={styles.input}
         placeholder="Enter email"
