@@ -51,7 +51,7 @@ export default function Home() {
       
         <RN.View style={styles.container}>
             <RN.ScrollView contentContainerStyle={{paddingBottom: 100}}>
-            <RN.Button title='Itens para doação' onPress={() => navigation.navigate('Chat')} />
+            <RN.Button title='Chat' onPress={() => navigation.navigate('Chat')} />
                 {products.map(product  => <Product  key={product.id} {...product} />) }
             </RN.ScrollView>
         </RN.View>
