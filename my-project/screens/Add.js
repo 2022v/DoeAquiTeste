@@ -36,7 +36,7 @@ export default function Add() {
 
     return(
         <RN.View style={styles.container}>
-            <RN.Text style={styles.title}>Sell a New Product</RN.Text>
+            <RN.Text style={styles.title}>Selecione uma Foto do Produto</RN.Text>
             <RN.Text onPress={() => setIsOpen(true)} style={styles.emoji}>{newItem.emoji}</RN.Text>
             <EmojiPicker
                 onEmojiSelected={handlePick}
@@ -46,14 +46,14 @@ export default function Add() {
                 <RN.TextInput 
                     onChangeText={(text) => setNewItem({...newItem, name: text})}
                     style={styles.inputContainer} 
-                    placeholder='Product Name' 
+                    placeholder='Nome do Produto' 
                 />
                 <RN.TextInput 
                     onChangeText={(text) => setNewItem({...newItem, descricao: text})}
                     style={styles.inputContainer} 
-                   placeholder='descricao' 
+                   placeholder='Descricao' 
                 />
-            <RN.Button title='Publish' onPress={onSend}/>
+            <RN.Button title='Publicar Item' onPress={onSend}/>
         </RN.View>
     )
 }

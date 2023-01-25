@@ -17,7 +17,7 @@ export default function Home() {
 
     React.useLayoutEffect(() => {
         navigation.setOptions({
-            headerRight: () => (<RN.Button title='Add' onPress={() => navigation.navigate('Add')} />
+            headerRight: () => (<RN.Button title='Adicionar Novo Item' onPress={() => navigation.navigate('Add')} />
          ),
            
         });
@@ -51,8 +51,8 @@ export default function Home() {
       
         <RN.View style={styles.container}>
             <RN.ScrollView contentContainerStyle={{paddingBottom: 100}}>
-            <RN.Button title='Chat' onPress={() => navigation.navigate('Chat')} />
-                {products.map(product => <Product key={product.id} {...product} />)}
+            <RN.Button title='Itens para doação' onPress={() => navigation.navigate('Chat')} />
+                {products.map(product  => <Product  key={product.id} {...product} />) }
             </RN.ScrollView>
         </RN.View>
     )
